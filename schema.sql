@@ -27,9 +27,3 @@ CREATE TABLE species (
 ALTER TABLE animals DROP COLUMN species;
 ALTER TABLE animals ADD COLUMN species_id integer references species(id);
 ALTER TABLE animals ADD COLUMN owner_id integer references owners(id);
-
--- Insert the following data into the species table
-INSERT INTO species (name) VALUES('Pokemon');
-INSERT INTO species (name) VALUES('Digimon');
-
--- Modify your inserted animals so it includes the species_id value
