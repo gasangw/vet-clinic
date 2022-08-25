@@ -42,3 +42,56 @@ SELECT DISTINCT COUNT(*), species.name FROM animals JOIN species ON animals.spec
 SELECT full_name, name FROM animals JOIN owners ON animals.owner_id = owners.id WHERE full_name = 'Jennifer Orwell';
 SELECT full_name, name, escape_attempts FROM animals JOIN owners ON animals.owner_id = owners.id WHERE escape_attempts = 0 AND full_name = 'Dean Winchester';
 SELECT full_name, COUNT(owner_id) AS total FROM animals JOIN owners ON animals.owner_id = owners.id GROUP BY full_name ORDER BY total DESC LIMIT 1;
+
+-- Write queries to answer the following
+SELECT animals.name, vets.name, visits.date_of_visit 
+FROM animals INNER JOIN visits ON animals.id = visits.animal_id 
+INNER JOIN vets ON visits.vetss_id = vets.id 
+WHERE visits.vetss_id = 1 
+ORDER BY visits.date_of_visit DESC LIMIT 1;
+
+SELECT COUNT(*) FROM animals 
+INNER JOIN visits ON animals.id = visits.animal_id 
+INNER JOIN vets ON visits.vetss_id = vets.id 
+WHERE visits.vetss_id = 3;
+
+SELECT vets.name, species.name FROM vets 
+LEFT JOIN specializations ON vets.id = specializations.vet_id 
+LEFT JOIN species ON specializations.species_id = species.id;
+
+SELECT animals.name, vets.name, visits.date_of_visit FROM animals 
+INNER JOIN visits ON animals.id = visits.animal_id 
+INNER JOIN vets ON visits.vetss_id = vets.id 
+WHERE visits.vetss_id = 3 
+GROUP BY animals.name, vets.name, visits.date_of_visit 
+HAVING visits.date_of_visit 
+BETWEEN date '2020-04-01' AND date '2020-08-30';
+
+SELECT animals.name, COUNT(vets.id) FROM animals 
+INNER JOIN visits ON animals.id = visits.animal_id 
+INNER JOIN vets ON visits.vetss_id = vets.id 
+GROUP BY animals.name 
+ORDER BY COUNT DESC;
+
+SELECT animals.name, vets.name, visits.date_of_visit FROM animals 
+INNER JOIN visits ON animals.id = visits.animal_id 
+INNER JOIN vets ON visits.vetss_id = vets.id 
+WHERE visits.vetss_id = 2 
+ORDER BY visits.date_of_visit LIMIT 1;
+
+SELECT *, vets.name, vets.age, vets.date_of_graduation FROM animals 
+INNER JOIN visits ON animals.id = visits.animal_id 
+INNER JOIN vets ON visits.vetss_id = vets.id 
+ORDER BY visits.date_of_visit DESC;
+
+SELECT COUNT(*) FROM animals INNER JOIN visits ON animals.id = visits.animal_id 
+INNER JOIN vets ON visits.vetss_id = vets.id 
+WHERE vets.id =2;
+
+SELECT species.name, COUNT(*) FROM species
+INNER JOIN animals ON species.id = animals.species_id
+INNER JOIN visits ON animals.id = visits.animal_id
+INNER JOIN vets ON vets.id = visits.vetss_id
+WHERE vets.id = 2 
+GROUP BY species.name 
+ORDER BY count DESC;
