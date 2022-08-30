@@ -6,6 +6,8 @@
 
 -[Database-Diagram](https://drawsql.app/teams/thomas-7/diagrams/vet-clinic-2/embed)
 
+![Screenshot (468)](https://user-images.githubusercontent.com/99269832/187421220-cbda8a4b-87c2-46e0-88bc-101c418c979b.png)
+
 ## Getting Started
 
 This repository includes files with plain SQL that can be used to recreate a database:
